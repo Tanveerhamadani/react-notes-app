@@ -2,10 +2,10 @@ import { MdDeleteForever } from "react-icons/md";
 
 const Note = ({ id, text, date }) => {
   return (
-    <div className="bg-sky-500  rounded-xl p-8 min-h-44 flex flex-col justify-between">
+    <div className="card-style">
       <span>{text}</span>
 
-      <div className="flex items-center justify-between">
+      <div className="card-footer">
         <small>{date}</small>
         <MdDeleteForever className="size-6" />
       </div>
