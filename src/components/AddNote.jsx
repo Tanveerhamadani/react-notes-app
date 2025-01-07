@@ -1,17 +1,36 @@
-import React from "react";
+import { useState } from "react";
 
-const addNote = () => {
+const addNote = ({ handleAddNote }) => {
+  const [noteText, setNoteText] = useState("");
+  const handleChange = (event) => {
+    setNoteText(event.target.value);
+  };
+
+  const handleClick = () => {
+    if (noteText.trim().length > 0) {
+      handleAddNote(noteText);
+      setNoteText("");
+    }
+  };
+
   return (
     <div className=" card-style add-note">
       <textarea
         rows="8"
         cols="10"
         placeholder="Type To Add A Note"
-        className="rounded-none resize-none"
+        className=" add-note rounded-none resize-none focus:outline-none placeholder-white"
+        value={noteText}
+        onChange={handleChange}
       ></textarea>
       <div className="card-footer">
         <small>200 Remaining</small>
-        <button>Add</button>
+        <button
+          className="bg-stone-200 rounded-2xl  px-2 py-1 hover:bg-white cursor-pointer"
+          onClick={handleClick}
+        >
+          Save Note
+        </button>
       </div>
     </div>
   );
